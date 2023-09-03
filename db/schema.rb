@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_03_091851) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_03_092706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_091851) do
     t.boolean "customer_paid", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "booking_type_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_091851) do
     t.string "booking_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["booking_link"], name: "index_users_on_booking_link", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
